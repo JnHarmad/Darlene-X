@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ForensiPie - Analysis Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2, h3 { color: #444; }
+        ul { margin-top: 0; }
+        .verdict { font-weight: bold; font-size: 1.2em; }
+        .malicious { color: red; }
+        .safe { color: green; }
+    </style>
+</head>
+<body>
+    <h1>ForensiPie - Static Analysis Report</h1>
+
+    <h2>Maliciousness Verdict</h2>
+    
+        <p class="verdict malicious">⚠️ Device Classified as MALICIOUS</p>
+        <ul>
+            
+                <li>Dangerous Permissions Detected</li>
+            
+                <li>Suspicious API Calls Detected</li>
+            
+                <li>YARA Match Found: Hidden Payloads</li>
+            
+                <li>YARA Match Found: Obfuscation</li>
+            
+        </ul>
+    
+
+    <h2>Module-wise Analysis</h2>
+    
+        <h3>Apk Info</h3>
+        
+            <ul>
+                
+            </ul>
+        
+    
+        <h3>Manifest</h3>
+        
+            <ul>
+                
+            </ul>
+        
+    
+        <h3>Database Encryption</h3>
+        
+            <ul>
+                
+            </ul>
+        
+    
+        <h3>Suspicious Apis</h3>
+        
+            <ul>
+                
+            </ul>
+        
+    
+        <h3>Signature Analysis</h3>
+        
+            <ul>
+                
+                    <li><strong>apk_file:</strong> E:/ExtractedAPKs/PM KISAN NEW RAGISTRATION UPDATE 2024.apk</li>
+                
+                    <li><strong>analysis_timestamp:</strong> 2025-05-03 02:24:14</li>
+                
+                    <li><strong>yara_results:</strong> {'boot_persistency': {'matches_found': False, 'matches': []}, 'hidden_payloads': {'matches_found': True, 'matches': [{'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\classes.dex', 'matches': ['Hidden_Executables_In_APK']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\resources.arsc', 'matches': ['Hidden_Executables_In_APK']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\META-INF\\ANDROID.SF', 'matches': ['Hidden_Executables_In_APK']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\META-INF\\MANIFEST.MF', 'matches': ['Hidden_Executables_In_APK']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\res\\-6.webp', 'matches': ['Hidden_Executables_In_APK']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\res\\iE.webp', 'matches': ['Hidden_Executables_In_APK']}]}, 'obfuscation': {'matches_found': True, 'matches': [{'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\classes.dex', 'matches': ['Android_Obfuscation_Base64Strings', 'Android_Obfuscation_ShortIdentifiers']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\classes2.dex', 'matches': ['Android_Obfuscation_Base64Strings']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\DebugProbesKt.bin', 'matches': ['Android_Obfuscation_Base64Strings']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\resources.arsc', 'matches': ['Android_Obfuscation_Base64Strings']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\kotlin\\coroutines\\coroutines.kotlin_builtins', 'matches': ['Android_Obfuscation_Base64Strings']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\META-INF\\ANDROID.SF', 'matches': ['Android_Obfuscation_Base64Strings', 'Android_Obfuscation_ShortIdentifiers']}, {'file': 'C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\META-INF\\MANIFEST.MF', 'matches': ['Android_Obfuscation_Base64Strings', 'Android_Obfuscation_ShortIdentifiers']}]}}</li>
+                
+                    <li><strong>status:</strong> Success</li>
+                
+            </ul>
+        
+    
+</body>
+</html>

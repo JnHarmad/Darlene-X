@@ -1,0 +1,121 @@
+{
+    "metadata": {
+        "generated_at": "2025-05-03 02:26:17",
+        "report_version": "1.0"
+    },
+    "apk_info": {},
+    "manifest": {},
+    "database_encryption": {},
+    "suspicious_apis": {},
+    "signature_analysis": {
+        "apk_file": "E:/ExtractedAPKs/PM KISAN NEW RAGISTRATION UPDATE 2024.apk",
+        "analysis_timestamp": "2025-05-03 02:24:14",
+        "yara_results": {
+            "boot_persistency": {
+                "matches_found": false,
+                "matches": []
+            },
+            "hidden_payloads": {
+                "matches_found": true,
+                "matches": [
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\classes.dex",
+                        "matches": [
+                            "Hidden_Executables_In_APK"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\resources.arsc",
+                        "matches": [
+                            "Hidden_Executables_In_APK"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\META-INF\\ANDROID.SF",
+                        "matches": [
+                            "Hidden_Executables_In_APK"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\META-INF\\MANIFEST.MF",
+                        "matches": [
+                            "Hidden_Executables_In_APK"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\res\\-6.webp",
+                        "matches": [
+                            "Hidden_Executables_In_APK"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\res\\iE.webp",
+                        "matches": [
+                            "Hidden_Executables_In_APK"
+                        ]
+                    }
+                ]
+            },
+            "obfuscation": {
+                "matches_found": true,
+                "matches": [
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\classes.dex",
+                        "matches": [
+                            "Android_Obfuscation_Base64Strings",
+                            "Android_Obfuscation_ShortIdentifiers"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\classes2.dex",
+                        "matches": [
+                            "Android_Obfuscation_Base64Strings"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\DebugProbesKt.bin",
+                        "matches": [
+                            "Android_Obfuscation_Base64Strings"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\resources.arsc",
+                        "matches": [
+                            "Android_Obfuscation_Base64Strings"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\kotlin\\coroutines\\coroutines.kotlin_builtins",
+                        "matches": [
+                            "Android_Obfuscation_Base64Strings"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\META-INF\\ANDROID.SF",
+                        "matches": [
+                            "Android_Obfuscation_Base64Strings",
+                            "Android_Obfuscation_ShortIdentifiers"
+                        ]
+                    },
+                    {
+                        "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_b3rqxw_d\\META-INF\\MANIFEST.MF",
+                        "matches": [
+                            "Android_Obfuscation_Base64Strings",
+                            "Android_Obfuscation_ShortIdentifiers"
+                        ]
+                    }
+                ]
+            }
+        },
+        "status": "Success"
+    },
+    "maliciousness_decision": {
+        "status": "MALICIOUS",
+        "reasons": [
+            "Dangerous Permissions Detected",
+            "Suspicious API Calls Detected",
+            "YARA Match Found: Hidden Payloads",
+            "YARA Match Found: Obfuscation"
+        ]
+    }
+}
