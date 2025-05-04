@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ForensiPie Analysis Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #fdfdfd;
+            color: #222;
+        }
+        h1 {
+            color: #b30000;
+        }
+        h2 {
+            border-bottom: 2px solid #b30000;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        ul, li {
+            margin: 5px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: left;
+        }
+        .highlight {
+            background-color: #ffe6e6;
+        }
+        .verdict {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+        .info-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>ForensiPie Analysis Report</h1>
+    <p><span class="info-label">Timestamp:</span> 2025-05-04 16:29:09</p>
+    <p><span class="info-label">Tool Version:</span> 1.0.0</p>
+
+    <div class="section verdict">
+        Device is classified as: MALICIOUS
+    </div>
+    <div class="section">
+        <h2>Reasons for Classification</h2>
+        <ul>
+            
+                <li>Missing or Suspicious Certificates</li>
+            
+                <li>Suspicious API Calls Detected</li>
+            
+                <li>YARA Match Found: Hidden Payloads</li>
+            
+                <li>YARA Match Found: Obfuscation</li>
+            
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Overview of APK</h2>
+        <ul>
+            
+                <li><span class="info-label">File Name:</span> E:\ExtractedAPKs\PM KISAN NEW RAGISTRATION UPDATE 2024.apk</li>
+            
+                <li><span class="info-label">File Path:</span> E:\ExtractedAPKs\PM KISAN NEW RAGISTRATION UPDATE 2024.apk</li>
+            
+                <li><span class="info-label">Package Name:</span> com.example.smsreafna</li>
+            
+                <li><span class="info-label">Minimum SDK:</span> 24</li>
+            
+                <li><span class="info-label">Target SDK:</span> 34</li>
+            
+        </ul>
+    </div>
+
+    
+        <div class="section">
+            <h2>APK Unpack and Decompilation</h2>
+            
+                <ul>
+                    
+                        <li><span class="info-label">Total Classes Decompiled:</span>
+                            
+                                8031
+                            
+                        </li>
+                    
+                        <li><span class="info-label">Total Methods Decompiled:</span>
+                            
+                                56559
+                            
+                        </li>
+                    
+                        <li><span class="info-label">DEX Files Count:</span>
+                            
+                                0
+                            
+                        </li>
+                    
+                        <li><span class="info-label">Errors:</span>
+                            
+                                <ul>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                </ul>
+            
+        </div>
+    
+        <div class="section">
+            <h2>Manifest Analysis</h2>
+            
+                <ul>
+                    
+                        <li><span class="info-label">Minimum SDK:</span>
+                            
+                                24
+                            
+                        </li>
+                    
+                        <li><span class="info-label">Target SDK:</span>
+                            
+                                34
+                            
+                        </li>
+                    
+                        <li><span class="info-label">Permissions:</span>
+                            
+                                <ul>
+                                    
+                                        <li>com.example.smsreafna.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</li>
+                                    
+                                        <li>android.permission.RECEIVE_SMS</li>
+                                    
+                                        <li>android.permission.ACCESS_NETWORK_STATE</li>
+                                    
+                                        <li>android.permission.SEND_SMS</li>
+                                    
+                                        <li>android.permission.INTERNET</li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        <li><span class="info-label">Broadcast Receivers:</span>
+                            
+                                <ul>
+                                    
+                                        <li>com.example.smsreafna.ReceiveSms</li>
+                                    
+                                        <li>androidx.profileinstaller.ProfileInstallReceiver</li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        <li><span class="info-label">Content Providers:</span>
+                            
+                                <ul>
+                                    
+                                        <li>androidx.startup.InitializationProvider</li>
+                                    
+                                        <li>com.google.firebase.provider.FirebaseInitProvider</li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        <li><span class="info-label">Activities:</span>
+                            
+                                <ul>
+                                    
+                                        <li>com.example.smsreafna.MainActivity</li>
+                                    
+                                        <li>com.google.android.gms.common.api.GoogleApiActivity</li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        <li><span class="info-label">Certificates:</span>
+                            
+                                <ul>
+                                    
+                                        <li>SHA1: 61ed377e85d386a8dfee6b864bd85b0bfaa5af81</li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                </ul>
+            
+        </div>
+    
+        <div class="section">
+            <h2>Database Encryption</h2>
+            
+                <ul>
+                    
+                        <li><span class="info-label">Status:</span>
+                            
+                                Not Available
+                            
+                        </li>
+                    
+                </ul>
+            
+        </div>
+    
+        <div class="section">
+            <h2>Suspicious API Calls</h2>
+            
+                <table>
+                    <tr>
+                        
+                            <th>method</th>
+                        
+                            <th>api_call</th>
+                        
+                            <th>description</th>
+                        
+                    </tr>
+                    
+                        <tr>
+                            
+                                <td>getSearchManagerSuggestions</td>
+                            
+                                <td>Landroid/content/ContentResolver;->query</td>
+                            
+                                <td>Potential database query operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>query</td>
+                            
+                                <td>Landroid/content/ContentResolver;->query</td>
+                            
+                                <td>Potential database query operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>unwrapCryptoObject</td>
+                            
+                                <td>Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;-><init></td>
+                            
+                                <td>Potential cryptographic operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>unwrapCryptoObject</td>
+                            
+                                <td>Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;->getCipher</td>
+                            
+                                <td>Potential cryptographic operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>unwrapCryptoObject</td>
+                            
+                                <td>Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;->getCipher</td>
+                            
+                                <td>Potential cryptographic operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>wrapCryptoObject</td>
+                            
+                                <td>Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;-><init></td>
+                            
+                                <td>Potential cryptographic operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>wrapCryptoObject</td>
+                            
+                                <td>Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;->getCipher</td>
+                            
+                                <td>Potential cryptographic operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>wrapCryptoObject</td>
+                            
+                                <td>Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;->getCipher</td>
+                            
+                                <td>Potential cryptographic operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>query</td>
+                            
+                                <td>Landroid/content/ContentResolver;->query</td>
+                            
+                                <td>Potential database query operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>exists</td>
+                            
+                                <td>Landroid/content/ContentResolver;->query</td>
+                            
+                                <td>Potential database query operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>queryForLong</td>
+                            
+                                <td>Landroid/content/ContentResolver;->query</td>
+                            
+                                <td>Potential database query operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>queryForString</td>
+                            
+                                <td>Landroid/content/ContentResolver;->query</td>
+                            
+                                <td>Potential database query operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>listFiles</td>
+                            
+                                <td>Landroid/content/ContentResolver;->query</td>
+                            
+                                <td>Potential database query operation.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>onCreate</td>
+                            
+                                <td>Landroid/telephony/SmsManager;->sendTextMessage</td>
+                            
+                                <td>Potential SMS sending activity.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>onReceive</td>
+                            
+                                <td>Landroid/telephony/SmsManager;->sendTextMessage</td>
+                            
+                                <td>Potential SMS sending activity.</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>zzb</td>
+                            
+                                <td>Landroid/content/ContentResolver;->query</td>
+                            
+                                <td>Potential database query operation.</td>
+                            
+                        </tr>
+                    
+                </table>
+            
+        </div>
+    
+        <div class="section">
+            <h2>Signature Based Analysis</h2>
+            
+                <table>
+                    <tr>
+                        
+                            <th>file</th>
+                        
+                            <th>rule</th>
+                        
+                    </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\classes.dex</td>
+                            
+                                <td>hidden_payloads</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\resources.arsc</td>
+                            
+                                <td>hidden_payloads</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\META-INF\ANDROID.SF</td>
+                            
+                                <td>hidden_payloads</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\META-INF\MANIFEST.MF</td>
+                            
+                                <td>hidden_payloads</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\res\-6.webp</td>
+                            
+                                <td>hidden_payloads</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\res\iE.webp</td>
+                            
+                                <td>hidden_payloads</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\classes.dex</td>
+                            
+                                <td>obfuscation</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\classes2.dex</td>
+                            
+                                <td>obfuscation</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\DebugProbesKt.bin</td>
+                            
+                                <td>obfuscation</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\resources.arsc</td>
+                            
+                                <td>obfuscation</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\kotlin\coroutines\coroutines.kotlin_builtins</td>
+                            
+                                <td>obfuscation</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\META-INF\ANDROID.SF</td>
+                            
+                                <td>obfuscation</td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                <td>C:\Users\03ata\AppData\Local\Temp\apk_decompiled__xif8r1p\META-INF\MANIFEST.MF</td>
+                            
+                                <td>obfuscation</td>
+                            
+                        </tr>
+                    
+                </table>
+            
+        </div>
+    
+</body>
+</html>

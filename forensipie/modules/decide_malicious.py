@@ -29,13 +29,108 @@ def gather_all_analysis(apk_path: str) -> dict:
         if analyze_func:
             results_key = module_name.split('_analysis')[0]
             try:
-                results[results_key] = analyze_func(apk_path)
+                # Special handling for apk_unpack_decompile which returns a tuple
+                if module_name == "apk_unpack_decompile":
+                    try:
+                        module_result, output_dir = analyze_func(apk_path)
+                        results[results_key] = module_result
+                        
+                        # Add debug info about the unpacked data
+                        console.print(f"[cyan]APK unpacking completed with {module_result.get('Classes', 0)} classes and {module_result.get('Methods', 0)} methods.[/cyan]")
+                        if module_result.get('status') == 'Failed':
+                            console.print(f"[red]APK unpacking failed: {module_result.get('error', 'Unknown error')}[/red]")
+                            for err in module_result.get('Errors', []):
+                                console.print(f"[red]Error detail: {err}[/red]")
+                                
+                        # Explicitly preserve class and method counts
+                        class_count = module_result.get('Classes', 0)
+                        method_count = module_result.get('Methods', 0)
+                        if class_count > 0 and method_count > 0:
+                            # Save to a dedicated property that won't be lost in transformations
+                            module_result['count_data'] = {
+                                'Classes': class_count,
+                                'Methods': method_count
+                            }
+                            # Set in multiple formats to ensure it's found
+                            module_result['classes'] = class_count
+                            module_result['methods'] = method_count
+                            
+                            # Create a console output record for later fallback
+                            if 'console_output' not in module_result:
+                                module_result['console_output'] = []
+                            module_result['console_output'].append(
+                                f"APK unpacking completed with {class_count} classes and {method_count} methods."
+                            )
+                    except Exception as e:
+                        console.print(f"[red]Exception during APK unpacking: {str(e)}[/red]")
+                        results[results_key] = {
+                            "status": "Failed",
+                            "error": str(e),
+                            "Classes": 0,
+                            "Methods": 0,
+                            "Errors": [str(e)]
+                        }
+                else:
+                    module_results = analyze_func(apk_path)
+                    results[results_key] = module_results
+                
+                # Special processing for apk_overview data
+                if results_key == "manifest":
+                    # Create APK overview from manifest data if not already present
+                    if "apk_overview" not in results:
+                        results["apk_overview"] = {
+                            "File Name": apk_path.split('/')[-1],
+                            "File Path": apk_path,
+                            "Package Name": module_results.get("package_name", "Unknown"),
+                            "Minimum SDK": module_results.get("sdk_versions", {}).get("min_sdk", "Unknown"),
+                            "Target SDK": module_results.get("sdk_versions", {}).get("target_sdk", "Unknown")
+                        }
+                        
+                    # Standardize manifest data format for report
+                    results["manifest"] = {
+                        "Minimum SDK": module_results.get("sdk_versions", {}).get("min_sdk", "Unknown"),
+                        "Target SDK": module_results.get("sdk_versions", {}).get("target_sdk", "Unknown"),
+                        "Permissions": module_results.get("permissions", []),
+                        "Broadcast Receivers": module_results.get("broadcast_receivers", []),
+                        "Content Providers": module_results.get("content_providers", []),
+                        "Activities": module_results.get("activities", []),
+                        "Certificates": [f"SHA1: {cert.get('sha1', 'Unknown')}" for cert in module_results.get("certificates", [])]
+                    }
+                
+                # Standardize suspicious API calls data format
+                elif results_key == "suspicious_api_calls":
+                    suspicious_apis = module_results.get("suspicious_apis", [])
+                    # Create both keys to ensure compatibility
+                    results["suspicious_api_calls"] = module_results
+                    results["suspicious_apis"] = {
+                        "APIs": suspicious_apis if isinstance(suspicious_apis, list) else []
+                    }
+                
+                # Standardize signature analysis data format
+                elif results_key == "signature":
+                    # Create standardized format for signature analysis
+                    results["signature_analysis"] = {
+                        "Matches": []
+                    }
+                    
+                    # Extract YARA matches if they exist
+                    yara_results = module_results.get("yara_results", {})
+                    for category, result in yara_results.items():
+                        matches = result.get("matches", [])
+                        if matches and isinstance(matches, list):
+                            for match in matches:
+                                results["signature_analysis"]["Matches"].append({
+                                    "file": match.get("file", "Unknown"),
+                                    "rule": match.get("rule", category)
+                                })
+                
             except Exception as e:
                 console.print(f"[red]Error running {module_name}: {e}[/red]")
     return results
 
-def decide_maliciousness(apk_path: str) -> dict:
-    all_results = gather_all_analysis(apk_path)
+def decide_maliciousness(apk_path: str, precomputed_results: dict = None) -> dict:
+    # If precomputed_results is passed, use it. Otherwise, gather all analysis results.
+    all_results = precomputed_results if precomputed_results else gather_all_analysis(apk_path)
 
     decision = {
         "status": "SAFE",

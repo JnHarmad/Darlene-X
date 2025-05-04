@@ -1,0 +1,195 @@
+{
+    "ForensiPie Report": {
+        "Timestamp": "2025-05-04 16:29:09",
+        "Tool Version": "1.0.0",
+        "Classification": {
+            "Status": "MALICIOUS",
+            "Reasons": [
+                "Missing or Suspicious Certificates",
+                "Suspicious API Calls Detected",
+                "YARA Match Found: Hidden Payloads",
+                "YARA Match Found: Obfuscation"
+            ]
+        },
+        "APK Overview": {
+            "File Name": "E:\\ExtractedAPKs\\PM KISAN NEW RAGISTRATION UPDATE 2024.apk",
+            "File Path": "E:\\ExtractedAPKs\\PM KISAN NEW RAGISTRATION UPDATE 2024.apk",
+            "Package Name": "com.example.smsreafna",
+            "Minimum SDK": "24",
+            "Target SDK": "34"
+        },
+        "Module Wise Analysis": {
+            "APK Unpack and Decompilation": {
+                "Total Classes Decompiled": 8031,
+                "Total Methods Decompiled": 56559,
+                "DEX Files Count": 0,
+                "Errors": []
+            },
+            "Manifest Analysis": {
+                "Minimum SDK": "24",
+                "Target SDK": "34",
+                "Permissions": [
+                    "com.example.smsreafna.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+                    "android.permission.RECEIVE_SMS",
+                    "android.permission.ACCESS_NETWORK_STATE",
+                    "android.permission.SEND_SMS",
+                    "android.permission.INTERNET"
+                ],
+                "Broadcast Receivers": [
+                    "com.example.smsreafna.ReceiveSms",
+                    "androidx.profileinstaller.ProfileInstallReceiver"
+                ],
+                "Content Providers": [
+                    "androidx.startup.InitializationProvider",
+                    "com.google.firebase.provider.FirebaseInitProvider"
+                ],
+                "Activities": [
+                    "com.example.smsreafna.MainActivity",
+                    "com.google.android.gms.common.api.GoogleApiActivity"
+                ],
+                "Certificates": [
+                    "SHA1: 61ed377e85d386a8dfee6b864bd85b0bfaa5af81"
+                ]
+            },
+            "Database Encryption State": {
+                "Encryption Status": "Not Available"
+            },
+            "Suspicious API Calls": [
+                {
+                    "method": "getSearchManagerSuggestions",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "query",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "unwrapCryptoObject",
+                    "api_call": "Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;-><init>",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "unwrapCryptoObject",
+                    "api_call": "Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;->getCipher",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "unwrapCryptoObject",
+                    "api_call": "Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;->getCipher",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "wrapCryptoObject",
+                    "api_call": "Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;-><init>",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "wrapCryptoObject",
+                    "api_call": "Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;->getCipher",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "wrapCryptoObject",
+                    "api_call": "Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;->getCipher",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "query",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "exists",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "queryForLong",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "queryForString",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "listFiles",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "onCreate",
+                    "api_call": "Landroid/telephony/SmsManager;->sendTextMessage",
+                    "description": "Potential SMS sending activity."
+                },
+                {
+                    "method": "onReceive",
+                    "api_call": "Landroid/telephony/SmsManager;->sendTextMessage",
+                    "description": "Potential SMS sending activity."
+                },
+                {
+                    "method": "zzb",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                }
+            ],
+            "Signature Based Analysis": [
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\classes.dex",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\resources.arsc",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\META-INF\\ANDROID.SF",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\META-INF\\MANIFEST.MF",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\res\\-6.webp",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\res\\iE.webp",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\classes.dex",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\classes2.dex",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\DebugProbesKt.bin",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\resources.arsc",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\kotlin\\coroutines\\coroutines.kotlin_builtins",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\META-INF\\ANDROID.SF",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\META-INF\\MANIFEST.MF",
+                    "rule": "obfuscation"
+                }
+            ]
+        }
+    }
+}
