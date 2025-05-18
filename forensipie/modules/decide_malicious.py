@@ -29,40 +29,31 @@ def gather_all_analysis(apk_path: str) -> dict:
         if analyze_func:
             results_key = module_name.split('_analysis')[0]
             try:
-                # Special handling for apk_unpack_decompile which returns a tuple
+                # Special handling for apk_unpack_decompile which returns a single value now
                 if module_name == "apk_unpack_decompile":
                     try:
-                        module_result, output_dir = analyze_func(apk_path)
+                        # Updated to handle single return value
+                        module_result = analyze_func(apk_path)
                         results[results_key] = module_result
                         
                         # Add debug info about the unpacked data
-                        console.print(f"[cyan]APK unpacking completed with {module_result.get('Classes', 0)} classes and {module_result.get('Methods', 0)} methods.[/cyan]")
-                        if module_result.get('status') == 'Failed':
-                            console.print(f"[red]APK unpacking failed: {module_result.get('error', 'Unknown error')}[/red]")
-                            for err in module_result.get('Errors', []):
+                        classes = module_result.get('statistics', {}).get('total_classes', 0)
+                        methods = module_result.get('statistics', {}).get('total_methods', 0)
+                        
+                        # Map the new structure to the old structure for compatibility
+                        if 'statistics' in module_result:
+                            # Create Classes and Methods fields for compatibility
+                            module_result['Classes'] = classes
+                            module_result['Methods'] = methods
+                        
+                        if module_result.get('errors', []):
+                            console.print(f"[red]APK unpacking had errors:[/red]")
+                            for err in module_result.get('errors', []):
                                 console.print(f"[red]Error detail: {err}[/red]")
-                                
-                        # Explicitly preserve class and method counts
-                        class_count = module_result.get('Classes', 0)
-                        method_count = module_result.get('Methods', 0)
-                        if class_count > 0 and method_count > 0:
-                            # Save to a dedicated property that won't be lost in transformations
-                            module_result['count_data'] = {
-                                'Classes': class_count,
-                                'Methods': method_count
-                            }
-                            # Set in multiple formats to ensure it's found
-                            module_result['classes'] = class_count
-                            module_result['methods'] = method_count
-                            
-                            # Create a console output record for later fallback
-                            if 'console_output' not in module_result:
-                                module_result['console_output'] = []
-                            module_result['console_output'].append(
-                                f"APK unpacking completed with {class_count} classes and {method_count} methods."
-                            )
                     except Exception as e:
                         console.print(f"[red]Exception during APK unpacking: {str(e)}[/red]")
+                        import traceback
+                        console.print(f"[red]{traceback.format_exc()}[/red]")
                         results[results_key] = {
                             "status": "Failed",
                             "error": str(e),
@@ -79,14 +70,33 @@ def gather_all_analysis(apk_path: str) -> dict:
                     # Create APK overview from manifest data if not already present
                     if "apk_overview" not in results:
                         results["apk_overview"] = {
-                            "File Name": apk_path.split('/')[-1],
+                            "File Name": apk_path,
                             "File Path": apk_path,
                             "Package Name": module_results.get("package_name", "Unknown"),
                             "Minimum SDK": module_results.get("sdk_versions", {}).get("min_sdk", "Unknown"),
                             "Target SDK": module_results.get("sdk_versions", {}).get("target_sdk", "Unknown")
                         }
-                        
-                    # Standardize manifest data format for report
+                
+                # If we have apk_unpack data with overview, use it to update or create APK overview
+                if results_key == "apk_unpack" and "overview" in module_results:
+                    overview = module_results.get("overview", {})
+                    
+                    # Create APK overview if not already present
+                    if "apk_overview" not in results:
+                        results["apk_overview"] = {}
+                    
+                    # Update with more detailed overview from unpack module
+                    results["apk_overview"].update({
+                        "File Name": apk_path,
+                        "File Path": apk_path,
+                        "Package Name": overview.get("package_name", results["apk_overview"].get("Package Name", "Unknown")),
+                        "Minimum SDK": overview.get("sdk_version", results["apk_overview"].get("Minimum SDK", "Unknown")),
+                        "File Size": overview.get("file_size", "Unknown"),
+                        "SHA-256": overview.get("file_hash", "Unknown")
+                    })
+                
+                # Standardize manifest data format for report if we're processing manifest results
+                if results_key == "manifest":
                     results["manifest"] = {
                         "Minimum SDK": module_results.get("sdk_versions", {}).get("min_sdk", "Unknown"),
                         "Target SDK": module_results.get("sdk_versions", {}).get("target_sdk", "Unknown"),

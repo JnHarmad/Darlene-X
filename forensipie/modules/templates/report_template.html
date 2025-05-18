@@ -82,7 +82,13 @@
                 <ul>
                     {% for key, value in module_data.items() %}
                         <li><span class="info-label">{{ key }}:</span>
-                            {% if value is mapping %}
+                            {% if key == "Statistics" and value is mapping %}
+                                <ul>
+                                    {% for stat_key, stat_value in value.items() %}
+                                        <li><strong>{{ stat_key | replace('_', ' ') | title }}:</strong> {{ stat_value }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% elif value is mapping %}
                                 <ul>
                                     {% for subkey, subvalue in value.items() %}
                                         <li>{{ subkey }}: {{ subvalue }}</li>
@@ -100,21 +106,25 @@
                         </li>
                     {% endfor %}
                 </ul>
-            {% elif module_data is iterable %}
-                <table>
-                    <tr>
-                        {% for column in module_data[0].keys() %}
-                            <th>{{ column }}</th>
-                        {% endfor %}
-                    </tr>
-                    {% for row in module_data %}
+            {% elif module_data is iterable and not module_data is string %}
+                {% if module_data|length > 0 %}
+                    <table>
                         <tr>
-                            {% for cell in row.values() %}
-                                <td>{{ cell }}</td>
+                            {% for column in module_data[0].keys() %}
+                                <th>{{ column }}</th>
                             {% endfor %}
                         </tr>
-                    {% endfor %}
-                </table>
+                        {% for row in module_data %}
+                            <tr>
+                                {% for cell in row.values() %}
+                                    <td>{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <p>No data available</p>
+                {% endif %}
             {% else %}
                 <p>{{ module_data }}</p>
             {% endif %}

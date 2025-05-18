@@ -3,7 +3,7 @@
 if __name__ == "__main__":
     from tkinter import Tk, filedialog
     from pathlib import Path
-    from forensipie.modules.apk_unpack_decompile import apk_unpack_and_decompile
+    from forensipie.modules.apk_unpack_decompile import analyze_apk_unpack
 
     root = Tk()
     root.withdraw()
@@ -17,16 +17,18 @@ if __name__ == "__main__":
         print("No APK selected. Exiting.")
         exit()
 
-    root_path = Path(__file__).resolve().parents[2]  # Go back to FORENSIPIE/
-    output_dir = root_path / "apk_output"
+    # No need to specify output dir, it's calculated within the function
+    print(f"Selected APK: {apk_path}\n")
 
-    print(f"Selected APK: {apk_path}")
-    print(f"Output Directory: {output_dir}\n")
-
-    results = apk_unpack_and_decompile(apk_path, str(output_dir))
+    results = analyze_apk_unpack(apk_path)
 
     # Print summary
     print("\n--- Result Summary ---")
-    print(f"DEX Files Processed: {len(results['dex_files'])}")
-    if results["status"] == "Failed":
-        print("Error:", results["error"])
+    print(f"Classes: {results['statistics']['total_classes']}")
+    print(f"Methods: {results['statistics']['total_methods']}")
+    print(f"DEX Files: {results['statistics']['dex_count']}")
+    
+    if results["errors"]:
+        print("Errors:")
+        for error in results["errors"]:
+            print(f"- {error}")

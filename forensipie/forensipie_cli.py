@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import threading
 from rich.console import Console
 from progress.bar import Bar
 
@@ -11,21 +12,48 @@ from forensipie.modules.report_generator import generate_reports
 
 console = Console()
 
-def show_progress_bar(task_name):
-    bar = Bar(task_name, max=100)
-    for _ in range(100):
-        time.sleep(0.01)
-        bar.next()
-    bar.finish()
+class TaskProgressBar:
+    def __init__(self, task_name, wait_time=5):
+        self.task_name = task_name
+        self.wait_time = wait_time
+        self.progress = 0
+        self.running = False
+        self.completed = False
+        self.bar = Bar(task_name, max=100)
+        
+    def start(self):
+        self.running = True
+        self.thread = threading.Thread(target=self._run)
+        self.thread.daemon = True
+        self.thread.start()
+        
+    def _run(self):
+        while self.running and self.progress < 100:
+            if self.progress < 95:  # Leave room for completion
+                increment = max(1, min(5, int(95 / (self.wait_time * 10))))
+                self.progress += increment
+                self.bar.goto(self.progress)
+                time.sleep(0.1)
+            else:
+                time.sleep(0.05)
+        
+    def complete(self):
+        self.running = False
+        if self.thread.is_alive():
+            self.thread.join(0.5)
+        self.progress = 100
+        self.bar.goto(100)
+        self.bar.finish()
+        self.completed = True
 
 def run_all_analysis_with_progress(apk_path):
     results = {}
     tasks = [
-        "APK Unpack and Decompile",
-        "Manifest Analysis",
-        "Database Encryption Analysis",
-        "Suspicious API Analysis",
-        "Signature Analysis"
+        {"name": "APK Unpack and Decompile", "time": 3},
+        {"name": "Manifest Analysis", "time": 2},
+        {"name": "Database Encryption Analysis", "time": 2},
+        {"name": "Suspicious API Analysis", "time": 2},
+        {"name": "Signature Analysis", "time": 3}
     ]
     console.print("\n[bold cyan]Running All Analysis Modules...[/bold cyan]")
     
@@ -50,28 +78,84 @@ def run_all_analysis_with_progress(apk_path):
         console.print(f"[green]Analyzing APK: {apk_path}[/green]")
         console.print(f"[green]File size: {os.path.getsize(apk_path) / (1024*1024):.2f} MB[/green]")
         
-        for task in tasks:
-            show_progress_bar(task)
+        # Create event to signal when analysis is complete
+        analysis_complete = threading.Event()
+        analysis_result = [None]  # Use a list to store the result from the thread
         
-        try:
-            results = gather_all_analysis(apk_path)
-        except Exception as e:
-            console.print(f"[bold red]Error during analysis: {str(e)}[/bold red]")
-            import traceback
-            console.print(f"[red]{traceback.format_exc()}[/red]")
+        # Start the actual analysis in a separate thread
+        def run_analysis():
+            try:
+                result = gather_all_analysis(apk_path)
+                analysis_result[0] = result
+            except Exception as e:
+                console.print(f"[bold red]Error during analysis: {str(e)}[/bold red]")
+                import traceback
+                console.print(f"[red]{traceback.format_exc()}[/red]")
+            finally:
+                analysis_complete.set()
+                
+        analysis_thread = threading.Thread(target=run_analysis)
+        analysis_thread.daemon = True
+        analysis_thread.start()
+        
+        # Show progress bars while analysis is running
+        progress_bars = []
+        total_progress_time = sum(task["time"] for task in tasks)
+        time_so_far = 0
+        
+        for task in tasks:
+            # Calculate how much of the total time this task represents
+            task_percentage = task["time"] / total_progress_time
+            
+            # Create and show progress bar
+            progress_bar = TaskProgressBar(task["name"], task["time"])
+            progress_bars.append(progress_bar)
+            progress_bar.start()
+            
+            # Wait for either the task's display time or until analysis completes
+            for _ in range(task["time"] * 10):  # 10 increments per second
+                if analysis_complete.is_set():
+                    break
+                time.sleep(0.1)
+            
+            progress_bar.complete()
+            time_so_far += task["time"]
+            
+            # If analysis is already complete, speed up remaining progress bars
+            if analysis_complete.is_set():
+                remaining_tasks = tasks[tasks.index(task) + 1:]
+                if remaining_tasks:
+                    console.print("[cyan]Analysis completed, finishing display...[/cyan]")
+                    for remaining_task in remaining_tasks:
+                        fast_bar = TaskProgressBar(remaining_task["name"], 0.5)  # Show quickly
+                        fast_bar.start()
+                        time.sleep(0.5)
+                        fast_bar.complete()
+                break
+        
+        # Wait for analysis to complete if it's still running
+        if not analysis_complete.is_set():
+            console.print("[cyan]Finalizing analysis...[/cyan]")
+            analysis_complete.wait()
+        
+        # Get the results from the completed analysis
+        results = analysis_result[0]
+        if results is None:
+            # Something went wrong, create default structure
+            console.print("[red]Analysis failed to return results. Creating default structure.[/red]")
             results = {
                 'apk_unpack': {
                     'Classes': 0,
                     'Methods': 0,
                     'status': 'Failed',
-                    'error': f'Analysis error: {str(e)}'
+                    'error': 'Analysis did not complete successfully'
                 },
                 'manifest': {
                     'package_name': 'Unknown',
                     'permissions': []
                 }
             }
-        
+            
         # Ensure basic structure exists even on partial failures
         if 'apk_unpack' not in results:
             results['apk_unpack'] = {
@@ -83,12 +167,6 @@ def run_all_analysis_with_progress(apk_path):
                 'package_name': 'Unknown',
                 'permissions': []
             }
-            
-        # Special handling for PM KISAN app
-        if 'PM KISAN' in apk_path and results['apk_unpack'].get('Classes', 0) == 0:
-            console.print("[bold yellow]Detected PM KISAN app with missing class data. Setting hardcoded values.[/bold yellow]")
-            results['apk_unpack']['Classes'] = 8031
-            results['apk_unpack']['Methods'] = 56559
     
     except Exception as outer_e:
         console.print(f"[bold red]Critical error during analysis process: {str(outer_e)}[/bold red]")
@@ -191,60 +269,32 @@ def main():
         analysis_results['apk_unpack'] = {}
     
     apk_unpack_info = analysis_results.get('apk_unpack', {})
-    class_count = apk_unpack_info.get('Classes', 0)
-    method_count = apk_unpack_info.get('Methods', 0)
     
-    # Debug output for verification
-    console.print(f"\n[bold yellow]Verifying data before report generation:[/bold yellow]")
-    console.print(f"[yellow]Classes: {class_count}, Methods: {method_count}[/yellow]")
+    # Check for new structure and extract class/method info
+    if 'statistics' in apk_unpack_info:
+        class_count = apk_unpack_info.get('statistics', {}).get('total_classes', 0)
+        method_count = apk_unpack_info.get('statistics', {}).get('total_methods', 0)
+        # Update the old structure keys for compatibility
+        apk_unpack_info['Classes'] = class_count
+        apk_unpack_info['Methods'] = method_count
+    else:
+        # Use old structure keys
+        class_count = apk_unpack_info.get('Classes', 0)
+        method_count = apk_unpack_info.get('Methods', 0)
     
+    # Debug output for verification - removing this entire section
     if class_count == 0 and method_count == 0:
-        console.print("[bold red]Warning: No class or method data found. Using fallback from console output.[/bold red]")
-        # Try to extract from apk_unpack data directly
-        dex_files = apk_unpack_info.get('dex_files', [])
-        if dex_files:
-            # Calculate from dex_files if available
-            for dex in dex_files:
-                class_count += len(dex.get('classes', []))
-                for cls in dex.get('classes', []):
-                    method_count += len(cls.get('methods', []))
-            
-            # Update the data structure
-            analysis_results['apk_unpack']['Classes'] = class_count
-            analysis_results['apk_unpack']['Methods'] = method_count
-            console.print(f"[green]Updated counts: Classes: {class_count}, Methods: {method_count}[/green]")
+        # Try to extract from available data
+        if 'statistics' in apk_unpack_info:
+            class_count = apk_unpack_info.get('statistics', {}).get('total_classes', 0)
+            method_count = apk_unpack_info.get('statistics', {}).get('total_methods', 0)
+            if class_count > 0 or method_count > 0:
+                # Update the structure with found values
+                analysis_results['apk_unpack']['Classes'] = class_count
+                analysis_results['apk_unpack']['Methods'] = method_count
         
-        # If we still have zeros but saw the console output with numbers, use those values
-        if class_count == 0 and method_count == 0:
-            # Direct fix: Use the values we saw in the console (8031 classes and 56559 methods)
-            console.print("[bold yellow]Using console-reported values as last resort.[/bold yellow]")
-            # Ensure apk_unpack key exists in analysis_results
-            if 'apk_unpack' not in analysis_results:
-                analysis_results['apk_unpack'] = {'Classes': 0, 'Methods': 0}
-                
-            # Find classes and methods in existing output
-            if 'apk_unpack' in analysis_results and 'console_output' in analysis_results['apk_unpack']:
-                for line in analysis_results['apk_unpack']['console_output']:
-                    if "APK unpacking completed with" in line and "classes and" in line and "methods" in line:
-                        parts = line.split("with ")[1].split(" classes and ")
-                        if len(parts) == 2:
-                            try:
-                                detected_classes = int(parts[0].strip())
-                                detected_methods = int(parts[1].split(" methods")[0].strip())
-                                
-                                analysis_results['apk_unpack']['Classes'] = detected_classes
-                                analysis_results['apk_unpack']['Methods'] = detected_methods
-                                console.print(f"[green]Used console values: Classes: {detected_classes}, Methods: {detected_methods}[/green]")
-                                break
-                            except:
-                                pass
-            
-            # Last resort: Hardcode the values we know
-            if 'apk_unpack' in analysis_results and analysis_results['apk_unpack'].get('Classes', 0) == 0:
-                console.print("[bold yellow]Using hardcoded fallback values.[/bold yellow]")
-                analysis_results['apk_unpack']['Classes'] = 8031
-                analysis_results['apk_unpack']['Methods'] = 56559
-                console.print(f"[green]Used hardcoded values: Classes: 8031, Methods: 56559[/green]")
+        # If no class/method data was found, we'll just continue with zeros
+        # NO FALLBACKS with hardcoded values or "console-reported values as last resort"
 
     # Create reports directory if it doesn't exist
     reports_dir = "reports"

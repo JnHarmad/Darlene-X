@@ -1,6 +1,6 @@
 {
     "ForensiPie Report": {
-        "Timestamp": "2025-05-04 16:29:09",
+        "Timestamp": "2025-05-15 13:45:38",
         "Tool Version": "1.0.0",
         "Classification": {
             "Status": "MALICIOUS",
@@ -12,43 +12,168 @@
             ]
         },
         "APK Overview": {
-            "File Name": "E:\\ExtractedAPKs\\PM KISAN NEW RAGISTRATION UPDATE 2024.apk",
-            "File Path": "E:\\ExtractedAPKs\\PM KISAN NEW RAGISTRATION UPDATE 2024.apk",
-            "Package Name": "com.example.smsreafna",
-            "Minimum SDK": "24",
+            "File Name": "E:\\ExtractedAPKs\\uptodown-com.google.android.youtube.apk",
+            "File Path": "E:\\ExtractedAPKs\\uptodown-com.google.android.youtube.apk",
+            "Package Name": "com.uptodown",
+            "Minimum SDK": "21",
             "Target SDK": "34"
         },
         "Module Wise Analysis": {
             "APK Unpack and Decompilation": {
-                "Total Classes Decompiled": 8031,
-                "Total Methods Decompiled": 56559,
+                "Total Classes Decompiled": 0,
+                "Total Methods Decompiled": 0,
                 "DEX Files Count": 0,
-                "Errors": []
+                "Errors": [],
+                "Output Paths": {},
+                "Statistics": {}
             },
             "Manifest Analysis": {
-                "Minimum SDK": "24",
+                "Minimum SDK": "21",
                 "Target SDK": "34",
                 "Permissions": [
-                    "com.example.smsreafna.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
-                    "android.permission.RECEIVE_SMS",
+                    "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
+                    "android.permission.ACCESS_WIFI_STATE",
+                    "android.permission.RECORD_AUDIO",
+                    "android.permission.ACCESS_ADSERVICES_AD_ID",
+                    "com.uptodown.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+                    "android.permission.FOREGROUND_SERVICE",
+                    "com.google.android.gms.permission.AD_ID",
+                    "android.permission.ENFORCE_UPDATE_OWNERSHIP",
+                    "android.permission.REQUEST_INSTALL_PACKAGES",
+                    "android.permission.INTERNET",
                     "android.permission.ACCESS_NETWORK_STATE",
-                    "android.permission.SEND_SMS",
-                    "android.permission.INTERNET"
+                    "android.permission.GET_PACKAGE_SIZE",
+                    "android.permission.INSTALL_PACKAGES",
+                    "android.permission.MANAGE_ACCOUNTS",
+                    "android.permission.REQUEST_DELETE_PACKAGES",
+                    "android.permission.POST_NOTIFICATIONS",
+                    "com.google.android.c2dm.permission.RECEIVE",
+                    "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION",
+                    "android.permission.RECEIVE_BOOT_COMPLETED",
+                    "android.permission.USE_CREDENTIALS",
+                    "android.permission.MANAGE_EXTERNAL_STORAGE",
+                    "android.permission.AUTHENTICATE_ACCOUNTS",
+                    "android.permission.QUERY_ALL_PACKAGES",
+                    "android.permission.DELETE_PACKAGES",
+                    "android.permission.GET_ACCOUNTS",
+                    "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+                    "android.permission.ACCESS_SUPERUSER",
+                    "android.permission.WRITE_EXTERNAL_STORAGE",
+                    "android.permission.WAKE_LOCK"
                 ],
                 "Broadcast Receivers": [
-                    "com.example.smsreafna.ReceiveSms",
-                    "androidx.profileinstaller.ProfileInstallReceiver"
+                    "com.uptodown.receivers.MyAppUpdatedReceiver",
+                    "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy",
+                    "com.uptodown.receivers.DownloadNotificationReceiver",
+                    "androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy",
+                    "com.uptodown.receivers.DownloadUpdateNotificationReceiver",
+                    "androidx.work.impl.background.systemalarm.RescheduleReceiver",
+                    "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
+                    "com.google.firebase.iid.FirebaseInstanceIdReceiver",
+                    "androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver",
+                    "com.google.android.gms.measurement.AppMeasurementReceiver",
+                    "androidx.work.impl.diagnostics.DiagnosticsReceiver",
+                    "org.matomo.sdk.extra.InstallReferrerReceiver",
+                    "androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy",
+                    "androidx.profileinstaller.ProfileInstallReceiver",
+                    "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver",
+                    "com.uptodown.receivers.BootDeviceReceiver",
+                    "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
                 ],
                 "Content Providers": [
                     "androidx.startup.InitializationProvider",
+                    "com.squareup.picasso.PicassoProvider",
+                    "androidx.core.content.FileProvider",
                     "com.google.firebase.provider.FirebaseInitProvider"
                 ],
                 "Activities": [
-                    "com.example.smsreafna.MainActivity",
-                    "com.google.android.gms.common.api.GoogleApiActivity"
+                    "com.uptodown.activities.preferences.PreferencesActivity",
+                    "com.uptodown.activities.preferences.AdvancedPreferencesActivity",
+                    "com.inmobi.cmp.presentation.components.CmpActivity",
+                    "com.stripe.android.paymentsheet.PaymentSheetActivity",
+                    "com.stripe.android.paymentsheet.PaymentOptionsActivity",
+                    "com.stripe.android.customersheet.CustomerSheetActivity",
+                    "com.stripe.android.paymentsheet.addresselement.AddressElementActivity",
+                    "com.stripe.android.paymentsheet.paymentdatacollection.bacs.BacsMandateConfirmationActivity",
+                    "com.stripe.android.paymentsheet.paymentdatacollection.polling.PollingActivity",
+                    "com.stripe.android.paymentsheet.ui.SepaMandateActivity",
+                    "com.stripe.android.paymentsheet.ExternalPaymentMethodProxyActivity",
+                    "com.stripe.android.paymentsheet.paymentdatacollection.cvcrecollection.CvcRecollectionActivity",
+                    "com.stripe.android.link.LinkForegroundActivity",
+                    "com.stripe.android.link.LinkRedirectHandlerActivity",
+                    "com.stripe.android.ui.core.cardscan.CardScanActivity",
+                    "com.stripe.android.view.AddPaymentMethodActivity",
+                    "com.stripe.android.view.PaymentMethodsActivity",
+                    "com.stripe.android.view.PaymentFlowActivity",
+                    "com.stripe.android.view.PaymentAuthWebViewActivity",
+                    "com.stripe.android.view.PaymentRelayActivity",
+                    "com.stripe.android.payments.StripeBrowserLauncherActivity",
+                    "com.stripe.android.payments.StripeBrowserProxyReturnActivity",
+                    "com.stripe.android.payments.core.authentication.threeds2.Stripe3ds2TransactionActivity",
+                    "com.stripe.android.googlepaylauncher.GooglePayLauncherActivity",
+                    "com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncherActivity",
+                    "com.stripe.android.payments.paymentlauncher.PaymentLauncherConfirmationActivity",
+                    "com.stripe.android.payments.bankaccount.ui.CollectBankAccountActivity",
+                    "com.stripe.android.stripe3ds2.views.ChallengeActivity",
+                    "com.google.android.gms.auth.api.signin.internal.SignInHubActivity",
+                    "com.google.android.gms.common.api.GoogleApiActivity",
+                    "com.mbridge.msdk.reward.player.MBRewardVideoActivity",
+                    "com.mbridge.msdk.activity.MBCommonActivity",
+                    "com.mbridge.msdk.out.LoadingActivity",
+                    "com.uptodown.activities.MyApps",
+                    "com.uptodown.activities.MainActivity",
+                    "com.uptodown.tv.ui.activity.TvMainActivity",
+                    "com.uptodown.tv.ui.activity.TvAppDetailActivity",
+                    "com.uptodown.tv.ui.activity.TvMyDownloadsActivity",
+                    "com.uptodown.tv.ui.activity.TvMyAppsActivity",
+                    "com.uptodown.tv.ui.activity.TvOldVersionsActivity",
+                    "com.uptodown.tv.ui.activity.TvSearchActivity",
+                    "com.uptodown.tv.ui.activity.TvAppsListActivity",
+                    "com.uptodown.tv.preferences.TvPrivacyPreferences",
+                    "com.uptodown.core.activities.InstallerActivity",
+                    "com.uptodown.activities.Updates",
+                    "com.uptodown.activities.FreeUpSpaceActivity",
+                    "com.uptodown.activities.RollbackActivity",
+                    "com.uptodown.activities.MyDownloads",
+                    "com.uptodown.activities.WishlistActivity",
+                    "com.uptodown.activities.RecommendedActivity",
+                    "com.uptodown.activities.PublicListActivity",
+                    "com.uptodown.activities.UpcomingReleasesActivity",
+                    "com.uptodown.activities.SecurityActivity",
+                    "com.uptodown.core.activities.FileExplorerActivity",
+                    "com.uptodown.activities.PasswordRecoveryActivity",
+                    "com.uptodown.activities.Gallery",
+                    "com.uptodown.activities.Suggestions",
+                    "com.uptodown.activities.LoginActivity",
+                    "com.uptodown.activities.YouTubeActivity",
+                    "com.uptodown.activities.SearchActivity",
+                    "com.uptodown.activities.OldVersionsActivity",
+                    "com.uptodown.activities.ReviewsActivity",
+                    "com.uptodown.activities.RepliesActivity",
+                    "com.uptodown.activities.PublicProfileActivity",
+                    "com.uptodown.activities.UserDevicesActivity",
+                    "com.uptodown.activities.UserDeviceDetailsActivity",
+                    "com.uptodown.activities.VirusTotalReport",
+                    "com.uptodown.activities.MoreInfo",
+                    "com.uptodown.activities.AppInstalledDetailsActivity",
+                    "com.uptodown.activities.AppFilesActivity",
+                    "com.uptodown.activities.CustomWebView",
+                    "com.uptodown.activities.GdprPrivacySettings",
+                    "com.uptodown.activities.AppDetailActivity",
+                    "com.uptodown.activities.NotificationsRegistryActivity",
+                    "com.uptodown.activities.LanguageSettingsActivity",
+                    "com.uptodown.activities.UserCommentsActivity",
+                    "com.uptodown.activities.OrganizationActivity",
+                    "com.uptodown.activities.InformationActivity",
+                    "com.uptodown.core.activities.ConfirmationIntentWrapperActivity",
+                    "com.uptodown.activities.PasswordEditActivity",
+                    "com.uptodown.activities.UsernameEditActivity",
+                    "com.uptodown.activities.UserEditProfileActivity",
+                    "com.uptodown.activities.UserAvatarActivity",
+                    "com.uptodown.activities.UptodownTurboActivity"
                 ],
                 "Certificates": [
-                    "SHA1: 61ed377e85d386a8dfee6b864bd85b0bfaa5af81"
+                    "SHA1: 4b64559bc35829fd427bf65985ffdd9a88909fc4"
                 ]
             },
             "Database Encryption State": {
@@ -61,9 +186,39 @@
                     "description": "Potential database query operation."
                 },
                 {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
                     "method": "query",
                     "api_call": "Landroid/content/ContentResolver;->query",
                     "description": "Potential database query operation."
+                },
+                {
+                    "method": "unwrapCryptoObject",
+                    "api_call": "Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;->getCipher",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "unwrapCryptoObject",
+                    "api_call": "Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;->getCipher",
+                    "description": "Potential cryptographic operation."
                 },
                 {
                     "method": "unwrapCryptoObject",
@@ -71,34 +226,19 @@
                     "description": "Potential cryptographic operation."
                 },
                 {
-                    "method": "unwrapCryptoObject",
-                    "api_call": "Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;->getCipher",
+                    "method": "wrapCryptoObject",
+                    "api_call": "Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;->getCipher",
                     "description": "Potential cryptographic operation."
                 },
                 {
-                    "method": "unwrapCryptoObject",
-                    "api_call": "Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;->getCipher",
+                    "method": "wrapCryptoObject",
+                    "api_call": "Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;->getCipher",
                     "description": "Potential cryptographic operation."
                 },
                 {
                     "method": "wrapCryptoObject",
                     "api_call": "Landroid/hardware/fingerprint/FingerprintManager$CryptoObject;-><init>",
                     "description": "Potential cryptographic operation."
-                },
-                {
-                    "method": "wrapCryptoObject",
-                    "api_call": "Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;->getCipher",
-                    "description": "Potential cryptographic operation."
-                },
-                {
-                    "method": "wrapCryptoObject",
-                    "api_call": "Landroidx/core/hardware/fingerprint/FingerprintManagerCompat$CryptoObject;->getCipher",
-                    "description": "Potential cryptographic operation."
-                },
-                {
-                    "method": "query",
-                    "api_call": "Landroid/content/ContentResolver;->query",
-                    "description": "Potential database query operation."
                 },
                 {
                     "method": "exists",
@@ -116,77 +256,1159 @@
                     "description": "Potential database query operation."
                 },
                 {
+                    "method": "getExifOrientation",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "g",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->setFixedLengthStreamingMode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Lcom/google/android/gms/measurement/internal/q2;->A",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->setInstanceFollowRedirects",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->setInstanceFollowRedirects",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Lcom/google/android/gms/measurement/internal/s4;->r",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "run",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
                     "method": "listFiles",
                     "api_call": "Landroid/content/ContentResolver;->query",
                     "description": "Potential database query operation."
                 },
                 {
-                    "method": "onCreate",
-                    "api_call": "Landroid/telephony/SmsManager;->sendTextMessage",
-                    "description": "Potential SMS sending activity."
+                    "method": "e",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
                 },
                 {
-                    "method": "onReceive",
-                    "api_call": "Landroid/telephony/SmsManager;->sendTextMessage",
-                    "description": "Potential SMS sending activity."
+                    "method": "e",
+                    "api_call": "Ljava/net/HttpURLConnection;->setInstanceFollowRedirects",
+                    "description": "Potential network communication."
                 },
                 {
-                    "method": "zzb",
+                    "method": "e",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "r",
+                    "api_call": "Lcom/google/android/gms/measurement/internal/s4;->s",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "A",
+                    "api_call": "Lcom/google/android/gms/measurement/internal/q2;->B",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->doFinal",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "LS1/i;->a",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "LS1/i;->a",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->doFinal",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "LS1/i;->a",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "b",
+                    "api_call": "Ljavax/crypto/Cipher;->doFinal",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "b",
+                    "api_call": "LS1/b;->a",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Ljavax/crypto/Cipher;->doFinal",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "e",
+                    "api_call": "LS1/b;->a",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "LS1/c;->b",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "b",
+                    "api_call": "Ljavax/crypto/Cipher;->getParameters",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljavax/crypto/Cipher;->updateAAD",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljavax/crypto/Cipher;->doFinal",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "d",
+                    "api_call": "LS1/c;->a",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljavax/crypto/Cipher;->updateAAD",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljavax/crypto/Cipher;->doFinal",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->doFinal",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "LS1/i;->a",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setInstanceFollowRedirects",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "<init>",
+                    "api_call": "Lcom/mbridge/msdk/e/a/a/g;->a",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "close",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "g",
                     "api_call": "Landroid/content/ContentResolver;->query",
                     "description": "Potential database query operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljavax/crypto/Cipher;->doFinal",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "<init>",
+                    "api_call": "Lcom/mbridge/msdk/playercommon/exoplayer2/upstream/cache/CachedContentIndex;->getCipher",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "getCipher",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "getCipher",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "readFile",
+                    "api_call": "Ljavax/crypto/CipherInputStream;-><init>",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "readFile",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "writeFile",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "writeFile",
+                    "api_call": "Ljavax/crypto/CipherOutputStream;-><init>",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "<init>",
+                    "api_call": "Ljavax/crypto/Cipher;->getBlockSize",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "<init>",
+                    "api_call": "Ljavax/crypto/Cipher;->getAlgorithm",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "<init>",
+                    "api_call": "Ljavax/crypto/Cipher;->getInstance",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "<init>",
+                    "api_call": "Ljavax/crypto/Cipher;->init",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "nonFlushingUpdate",
+                    "api_call": "Ljavax/crypto/Cipher;->update",
+                    "description": "Potential cryptographic operation."
+                },
+                {
+                    "method": "k",
+                    "api_call": "Lf1/c;->o",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "o",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "o",
+                    "api_call": "Ljava/net/HttpURLConnection;->getErrorStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "o",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseMessage",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Lf1/c;->n",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Lf1/c;->k",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Lf1/c;->q",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Lf1/c;->l",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Lf1/c;->r",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Lf1/c;->p",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Lf1/c;->k",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Lf1/c;->l",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "g",
+                    "api_call": "Ljava/net/HttpURLConnection;->getErrorStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "b",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "close",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "k",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "k",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Lcom/mbridge/msdk/e/a/a/g;->b",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Lcom/mbridge/msdk/e/a/a/g;->a",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "b",
+                    "api_call": "Ljava/net/HttpURLConnection;->getErrorStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Lcom/mbridge/msdk/e/a/a/g;->a",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Lcom/mbridge/msdk/e/a/a/g;->a",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->getFollowRedirects",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Lcom/mbridge/msdk/e/a/a/g$a;-><init>",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Lcom/mbridge/msdk/e/a/a/g;->a",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setInstanceFollowRedirects",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "runTask",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "runTask",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "b",
+                    "api_call": "Lcom/stripe/android/stripe3ds2/transaction/r;->f",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "e",
+                    "api_call": "Lcom/stripe/android/stripe3ds2/transaction/r$a;->a",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "f",
+                    "api_call": "Lcom/stripe/android/stripe3ds2/transaction/r;->e",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "g",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "g",
+                    "api_call": "Lcom/stripe/android/stripe3ds2/transaction/r;->e",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "i",
+                    "api_call": "Lcom/stripe/android/stripe3ds2/transaction/r;->g",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "i",
+                    "api_call": "Lcom/stripe/android/stripe3ds2/transaction/r;->k",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "k",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "closeConnectionQuietly",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "makeConnection",
+                    "api_call": "Lcom/mbridge/msdk/playercommon/exoplayer2/upstream/DefaultHttpDataSource;->makeConnection",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "makeConnection",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "makeConnection",
+                    "api_call": "Lcom/mbridge/msdk/playercommon/exoplayer2/upstream/DefaultHttpDataSource;->makeConnection",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "makeConnection",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "makeConnection",
+                    "api_call": "Ljava/net/HttpURLConnection;->setFixedLengthStreamingMode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "makeConnection",
+                    "api_call": "Ljava/net/HttpURLConnection;->setInstanceFollowRedirects",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "makeConnection",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "close",
+                    "api_call": "Lcom/mbridge/msdk/playercommon/exoplayer2/upstream/DefaultHttpDataSource;->maybeTerminateInputStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "open",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "open",
+                    "api_call": "Lcom/mbridge/msdk/playercommon/exoplayer2/upstream/DefaultHttpDataSource;->makeConnection",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "open",
+                    "api_call": "Lcom/mbridge/msdk/playercommon/exoplayer2/upstream/DefaultHttpDataSource;->getContentLength",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "k",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "a",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "invoke",
+                    "api_call": "LB2/l$c$a;->a",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "invokeSuspend",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "invokeSuspend",
+                    "api_call": "Lcom/stripe/android/stripe3ds2/transaction/r;->b",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "invokeSuspend",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "invokeSuspend",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "j",
+                    "api_call": "Landroid/content/ContentResolver;->query",
+                    "description": "Potential database query operation."
+                },
+                {
+                    "method": "<init>",
+                    "api_call": "Ljava/lang/Runtime;->exec",
+                    "description": "Potential command execution."
+                },
+                {
+                    "method": "<init>",
+                    "api_call": "Ljava/lang/Runtime;->exec",
+                    "description": "Potential command execution."
+                },
+                {
+                    "method": "H",
+                    "api_call": "Ljava/lang/Runtime;->exec",
+                    "description": "Potential command execution."
+                },
+                {
+                    "method": "b",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "b",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "b",
+                    "api_call": "Ljava/net/HttpURLConnection;->getErrorStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "E",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "E",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "E",
+                    "api_call": "Ljava/net/HttpURLConnection;->getErrorStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljava/net/HttpURLConnection;->setFixedLengthStreamingMode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "d",
+                    "api_call": "Ljava/net/HttpURLConnection;->setRequestMethod",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "f",
+                    "api_call": "Ljava/net/HttpURLConnection;->getErrorStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "f",
+                    "api_call": "Ljava/net/HttpURLConnection;->getErrorStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "f",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "f",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->getErrorStream",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "c",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "l",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "B",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "C",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "H",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "H",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "H",
+                    "api_call": "Ljava/net/HttpURLConnection;->setInstanceFollowRedirects",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "m",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "p",
+                    "api_call": "Ljava/net/HttpURLConnection;->getResponseCode",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "R",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "O",
+                    "api_call": "Ljava/net/HttpURLConnection;->disconnect",
+                    "description": "Potential network communication."
+                },
+                {
+                    "method": "invokeSuspend",
+                    "api_call": "Ljava/lang/Runtime;->exec",
+                    "description": "Potential command execution."
                 }
             ],
             "Signature Based Analysis": [
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\classes.dex",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes.dex",
                     "rule": "hidden_payloads"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\resources.arsc",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes2.dex",
                     "rule": "hidden_payloads"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\META-INF\\ANDROID.SF",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes3.dex",
                     "rule": "hidden_payloads"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\META-INF\\MANIFEST.MF",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes4.dex",
                     "rule": "hidden_payloads"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\res\\-6.webp",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes5.dex",
                     "rule": "hidden_payloads"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\res\\iE.webp",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\resources.arsc",
                     "rule": "hidden_payloads"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\classes.dex",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-cartesbancaires.pem",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-test-rsa.txt",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\lib\\arm64-v8a\\libdatastore_shared_counter.so",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\lib\\armeabi-v7a\\libdatastore_shared_counter.so",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\lib\\x86\\libdatastore_shared_counter.so",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\lib\\x86_64\\libdatastore_shared_counter.so",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\META-INF\\CERT.SF",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\META-INF\\MANIFEST.MF",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\CA.json",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\cC.png",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\dr.png",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\Lc.png",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\Q9.png",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\Ta.jpg",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\Tx.png",
+                    "rule": "hidden_payloads"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\androidsupportmultidexversion.txt",
                     "rule": "obfuscation"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\classes2.dex",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes.dex",
                     "rule": "obfuscation"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\DebugProbesKt.bin",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes2.dex",
                     "rule": "obfuscation"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\resources.arsc",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes3.dex",
                     "rule": "obfuscation"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\kotlin\\coroutines\\coroutines.kotlin_builtins",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes4.dex",
                     "rule": "obfuscation"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\META-INF\\ANDROID.SF",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\classes5.dex",
                     "rule": "obfuscation"
                 },
                 {
-                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled__xif8r1p\\META-INF\\MANIFEST.MF",
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\client_analytics.proto",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\DebugProbesKt.bin",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\messaging_event.proto",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\messaging_event_extension.proto",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\resources.arsc",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-amex.pem",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-cartesbancaires.pem",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-discover.cer",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-mastercard.crt",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-test-ec.txt",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-test-rsa.txt",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\assets\\ds-visa.crt",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\kotlin\\coroutines\\coroutines.kotlin_builtins",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\lib\\arm64-v8a\\libdatastore_shared_counter.so",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\lib\\armeabi-v7a\\libdatastore_shared_counter.so",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\lib\\x86\\libdatastore_shared_counter.so",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\lib\\x86_64\\libdatastore_shared_counter.so",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\META-INF\\CERT.SF",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\META-INF\\MANIFEST.MF",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\META-INF\\version-control-info.textproto",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\CA.json",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\pu.png",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\Sc.json",
+                    "rule": "obfuscation"
+                },
+                {
+                    "file": "C:\\Users\\03ata\\AppData\\Local\\Temp\\apk_decompiled_izaivuk6\\res\\Ta.jpg",
                     "rule": "obfuscation"
                 }
             ]

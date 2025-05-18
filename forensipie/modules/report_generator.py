@@ -9,75 +9,9 @@ from jinja2 import Environment, FileSystemLoader
 
 def generate_reports(data, output_dir):
     os.makedirs(output_dir, exist_ok=True)
-
-    # Ensure APK unpack data has class and method counts
-    apk_unpack = data['analysis_result'].get('apk_unpack', {})
-    class_count = apk_unpack.get('Classes', 0)
-    method_count = apk_unpack.get('Methods', 0)
     
-    # Check multiple possible locations for the data
-    if class_count == 0 or method_count == 0:
-        # Try lowercase keys
-        class_count = apk_unpack.get('classes', class_count)
-        method_count = apk_unpack.get('methods', method_count)
-        
-        # Try count_data
-        count_data = apk_unpack.get('count_data', {})
-        if count_data:
-            class_count = count_data.get('Classes', class_count)
-            method_count = count_data.get('Methods', method_count)
-    
-    # If counts are zero but dex files exist, recalculate
-    if (class_count == 0 or method_count == 0) and 'dex_files' in apk_unpack:
-        recalculated_class_count = 0
-        recalculated_method_count = 0
-        
-        for dex_file in apk_unpack.get('dex_files', []):
-            classes = dex_file.get('classes', [])
-            recalculated_class_count += len(classes)
-            
-            for cls in classes:
-                methods = cls.get('methods', [])
-                recalculated_method_count += len(methods)
-        
-        # Update the data if we have better values
-        if recalculated_class_count > 0:
-            data['analysis_result']['apk_unpack']['Classes'] = recalculated_class_count
-            class_count = recalculated_class_count
-        if recalculated_method_count > 0:
-            data['analysis_result']['apk_unpack']['Methods'] = recalculated_method_count
-            method_count = recalculated_method_count
-            
-        print(f"[*] Recalculated counts for report: Classes: {recalculated_class_count}, Methods: {recalculated_method_count}")
-    
-    # Try to extract from console output as last resort
-    if (class_count == 0 or method_count == 0) and 'console_output' in apk_unpack:
-        for output_line in apk_unpack.get('console_output', []):
-            if "APK unpacking completed with" in output_line and "classes and" in output_line and "methods" in output_line:
-                try:
-                    parts = output_line.split("with ")[1].split(" classes and ")
-                    if len(parts) == 2:
-                        extracted_classes = int(parts[0].strip())
-                        extracted_methods = int(parts[1].split(" methods")[0].strip())
-                        
-                        if extracted_classes > 0:
-                            data['analysis_result']['apk_unpack']['Classes'] = extracted_classes
-                            class_count = extracted_classes
-                        if extracted_methods > 0:
-                            data['analysis_result']['apk_unpack']['Methods'] = extracted_methods
-                            method_count = extracted_methods
-                        
-                        print(f"[*] Extracted counts from console output: Classes: {extracted_classes}, Methods: {extracted_methods}")
-                        break
-                except:
-                    pass
-    
-    # Last resort: Use hardcoded values if we know this is the PM KISAN app
-    apk_path = apk_unpack.get('apk_file', '')
-    if (class_count == 0 or method_count == 0) and 'PM KISAN' in apk_path:
-        print("[*] Using hardcoded values for PM KISAN app")
-        data['analysis_result']['apk_unpack']['Classes'] = 8031
-        data['analysis_result']['apk_unpack']['Methods'] = 56559
+    # All fallback mechanisms removed - we will report the data we actually have
+    # No hardcoded values or parsing from console output
 
     status = {
         "pdf": generate_pdf(data, os.path.join(output_dir, "report.pdf")),
@@ -122,12 +56,6 @@ def generate_json(data, output_path):
                 },
                 "APK Overview": data['analysis_result'].get('apk_overview', {}),
                 "Module Wise Analysis": {
-                    "APK Unpack and Decompilation": {
-                        "Total Classes Decompiled": data['analysis_result'].get('apk_unpack', {}).get("Classes", 0),
-                        "Total Methods Decompiled": data['analysis_result'].get('apk_unpack', {}).get("Methods", 0),
-                        "DEX Files Count": len(data['analysis_result'].get('apk_unpack', {}).get("dex_files", [])),
-                        "Errors": data['analysis_result'].get('apk_unpack', {}).get("Errors", [])
-                    },
                     "Manifest Analysis": {
                         "Minimum SDK": data['analysis_result'].get('manifest', {}).get("Minimum SDK"),
                         "Target SDK": data['analysis_result'].get('manifest', {}).get("Target SDK"),
@@ -198,58 +126,6 @@ def generate_pdf(data, output_path):
             for key, value in overview.items():
                 if value:  # Only include non-empty values
                     flowables.append(Paragraph(f"- {key}: {value}", custom_style))
-        flowables.append(Spacer(1, 12))
-
-        # APK Unpack and Decompilation
-        unpack_info = data['analysis_result'].get('apk_unpack', {})
-        flowables.append(Paragraph("<b>APK UNPACK AND DECOMPILATION</b>", heading2))
-        
-        # Make sure to display class and method counts prominently
-        class_count = unpack_info.get('Classes', 0)
-        method_count = unpack_info.get('Methods', 0)
-        
-        # Display counts with emphasis if they exist
-        if class_count > 0:
-            flowables.append(Paragraph(f"- <b>Total Classes Decompiled:</b> {class_count}", custom_style))
-        else:
-            # Try to calculate from dex_files if available
-            calculated_class_count = 0
-            calculated_method_count = 0
-            dex_files = unpack_info.get('dex_files', [])
-            
-            for dex_file in dex_files:
-                classes = dex_file.get('classes', [])
-                calculated_class_count += len(classes)
-                
-                for cls in classes:
-                    methods = cls.get('methods', [])
-                    calculated_method_count += len(methods)
-            
-            if calculated_class_count > 0:
-                flowables.append(Paragraph(f"- <b>Total Classes Decompiled:</b> {calculated_class_count} (calculated from DEX files)", custom_style))
-            else:
-                flowables.append(Paragraph("- Total Classes Decompiled: Not available", custom_style))
-            
-            # Also update method count if we calculated it
-            if calculated_method_count > 0:
-                method_count = calculated_method_count
-        
-        if method_count > 0:
-            flowables.append(Paragraph(f"- <b>Total Methods Decompiled:</b> {method_count}", custom_style))
-        else:
-            flowables.append(Paragraph("- Total Methods Decompiled: Not available", custom_style))
-        
-        # If dex_files is present, show DEX file count
-        dex_files = unpack_info.get('dex_files', [])
-        if dex_files:
-            flowables.append(Paragraph(f"- DEX Files: {len(dex_files)}", custom_style))
-            
-        # Show any errors during decompilation
-        if 'Errors' in unpack_info and unpack_info['Errors']:
-            flowables.append(Paragraph("- Errors during decompilation:", custom_style))
-            for err in unpack_info['Errors']:
-                flowables.append(Paragraph(f"  * {err}", custom_style))
-        
         flowables.append(Spacer(1, 12))
 
         # Manifest Analysis
@@ -359,6 +235,15 @@ def generate_html(data, output_path):
             api_calls_data = data['analysis_result'].get('suspicious_api_calls', {})
             apis = api_calls_data.get("suspicious_apis", [])
             
+        # Format the API data properly for the template
+        formatted_apis = []
+        if isinstance(apis, list):
+            for api in apis:
+                if isinstance(api, dict):
+                    formatted_apis.append(api)
+                elif isinstance(api, str):
+                    formatted_apis.append({"method": api, "description": "No description available"})
+        
         # Get signature analysis data with fallback mechanism
         sig_info = data['analysis_result'].get('signature_analysis', {})
         matches = sig_info.get("Matches", [])
@@ -375,21 +260,39 @@ def generate_html(data, output_path):
                                 "rule": match.get("rule", category)
                             })
         
+        # Format the matches data properly for the template
+        formatted_matches = []
+        if isinstance(matches, list):
+            for match in matches:
+                if isinstance(match, dict):
+                    formatted_matches.append(match)
+                elif isinstance(match, str):
+                    formatted_matches.append({"file": "Unknown", "rule": match})
+        
+        # Create a dictionary of manifest data with proper formatting
+        manifest_data = {}
+        manifest_info = data['analysis_result'].get('manifest', {})
+        for key, value in manifest_info.items():
+            if value:  # Only include non-empty values
+                manifest_data[key] = value
+        
         # Create structured module results for the template
         module_results = {
-            "APK Unpack and Decompilation": {
-                "Total Classes Decompiled": data['analysis_result'].get('apk_unpack', {}).get("Classes", 0),
-                "Total Methods Decompiled": data['analysis_result'].get('apk_unpack', {}).get("Methods", 0),
-                "DEX Files Count": len(data['analysis_result'].get('apk_unpack', {}).get("dex_files", [])),
-                "Errors": data['analysis_result'].get('apk_unpack', {}).get("Errors", [])
-            },
-            "Manifest Analysis": data['analysis_result'].get('manifest', {}),
+            "Manifest Analysis": manifest_data,
             "Database Encryption": {
                 "Status": data['analysis_result'].get('encryption', {}).get("Encryption Status", "Not Available")
             },
-            "Suspicious API Calls": apis,
-            "Signature Based Analysis": matches
+            "Suspicious API Calls": formatted_apis,
+            "Signature Based Analysis": formatted_matches
         }
+        
+        # Get APK overview data
+        apk_info = {}
+        overview = data['analysis_result'].get('apk_overview', {})
+        if overview:
+            for key, value in overview.items():
+                if value:  # Only include non-empty values
+                    apk_info[key] = value
         
         current_dir = os.path.dirname(os.path.abspath(__file__))
         templates_dir = os.path.join(current_dir, "templates")
@@ -402,7 +305,7 @@ def generate_html(data, output_path):
             tool_version="1.0.0",
             verdict=data['maliciousness_decision'].get("status", "UNKNOWN"),
             reasons=data['maliciousness_decision'].get("reasons", []),
-            apk_info=data['analysis_result'].get('apk_overview', {}),
+            apk_info=apk_info,
             module_results=module_results
         )
 
@@ -411,4 +314,6 @@ def generate_html(data, output_path):
         return True
     except Exception as e:
         print(f"[!] HTML Report Error: {e}")
+        import traceback
+        print(traceback.format_exc())  # Print the full traceback for better debugging
         return False
