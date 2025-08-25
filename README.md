@@ -1,4 +1,7 @@
-ForensiPie- Android Malware Analysis Tool
+ForensiPie- Android Static Analysis Tool
+
+<img width="1518" height="494" alt="Screenshot (181)" src="https://github.com/user-attachments/assets/f7d22ff5-bf8c-412b-865f-396be42325f0" />
+
 
 
 To run this forensipie_cli.py module from windows powershell, these are steps:
