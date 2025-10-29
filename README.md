@@ -1,5 +1,6 @@
 Darlene-X - Android Static Analysis Tool
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9122c21e-8ca4-47ad-9c67-bdfe285eef02" />
 
 
 
